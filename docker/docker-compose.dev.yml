@@ -1,0 +1,34 @@
+name: botenix
+
+services:
+  mattermost:
+    image: mattermost/mattermost-enterprise-edition:release-10
+    depends_on:
+      - postgres
+    ports:
+      - "8065:8065"
+      - "8443:8443"
+    volumes:
+      - mattermost_data:/mattermost
+      - ./mattermost/config/config.json:/mattermost/config/config.json
+    env_file:
+      - .env.local
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  postgres:
+    image: postgres:13-alpine
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+    env_file:
+      - .env.local
+    environment:
+      POSTGRES_MAX_CONNECTIONS: 100
+
+volumes:
+  mattermost_data:
+    name: mattermost-data
+  postgres_data:
+    name: postgres-data

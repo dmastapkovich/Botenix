@@ -1,0 +1,6 @@
+*
+!.gitignore
+
+!/config/
+/config/*
+!/config/config.json
