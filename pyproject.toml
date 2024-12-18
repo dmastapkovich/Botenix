@@ -79,6 +79,7 @@ disallow_any_unimported = true
 strict = true
 implicit_reexport = false
 warn_unused_ignores = false
+files = ["src", "tests"]
 
 [tool.pydantic-mypy]
 init_forbid_extra = true
