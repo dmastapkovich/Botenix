@@ -10,7 +10,7 @@ repos:
         entry: end-of-file-fixer
         language: system
         types: [text]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
 
       - id: mixed-line-ending
         name: Mixed line ending
@@ -25,15 +25,7 @@ repos:
         entry: trailing-whitespace-fixer
         language: system
         types: [text]
-        stages: [commit, push, manual]
-
-      - id: check-poetry
-        name: Poetry check
-        description: Validates the structure of the pyproject.toml file
-        entry: poetry check
-        language: system
-        pass_filenames: false
-        files: pyproject.toml
+        stages: [pre-commit, pre-push, manual]
 
       - id: ruff-linter
         name: ruff-linter
