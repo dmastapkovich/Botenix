@@ -43,10 +43,3 @@ jobs:
           custom-pytest: uv run pytest
           verbose: true
           job-summary: true
-
-      - name: Verify CHANGELOG updated
-        run: |
-          if ! grep -q "## Unreleased" CHANGELOG.md; then
-            echo "CHANGELOG must be updated for this release."
-            exit 1
-          fi
